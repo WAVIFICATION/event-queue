@@ -1,8 +1,6 @@
-"use strict";
-
-const { promisify } = require("util");
-const cds = require("@sap/cds");
-const eventQueue = require("@cap-js-community/event-queue");
+import { promisify } from "util";
+import cds from "@sap/cds";
+import * as eventQueue from "@cap-js-community/event-queue";
 
 class EventQueueMail extends eventQueue.EventQueueProcessorBase {
   constructor(context, eventType, eventSubType, config) {
@@ -40,4 +38,4 @@ class EventQueueMail extends eventQueue.EventQueueProcessorBase {
   }
 }
 
-module.exports = EventQueueMail;
+export default EventQueueMail;

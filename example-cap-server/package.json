@@ -12,25 +12,26 @@
   "dependencies": {
     "@cap-js-community/event-queue": "file:..",
     "@cap-js/audit-logging": "^0.5.2",
-    "@sap/cds": "^7.5.0",
-    "@sap/cds-mtxs": "1.14.0",
+    "@sap/cds": "^8.5.0",
+    "@sap/cds-mtxs": "^2",
     "express": "^4.18.2",
     "redis": "^4.6.12",
     "verror": "^1.10.1"
   },
   "devDependencies": {
-    "@cap-js/sqlite": "1.4.0",
+    "@cap-js/cds-types": "^0.8.0",
+    "@cap-js/sqlite": "^1.5.0",
     "eslint": "8.56.0",
     "eslint-config-prettier": "9.0.0",
-    "prettier": "3.0.3",
-    "sqlite3": "5.1.6"
+    "prettier": "3.0.3"
   },
   "cds": {
     "eventQueue": {
       "plugin": true,
       "configFilePath": "./srv/eventConfig.yml",
       "runInterval": 300000,
-      "useAsCAPOutbox": true
+      "useAsCAPOutbox": true,
+      "updatePeriodicEvents": true
     },
     "requires": {
       "outbox": true,
@@ -41,11 +42,7 @@
       "cds.xt.ExtensibilityService": false,
       "db": {
         "[development]": {
-          "kind": "sqlite",
-          "credentials": {
-            "database": "data/afc.sqlite"
-          },
-          "schema_evolution": ""
+          "kind": "sql"
         }
       },
       "task-service": {

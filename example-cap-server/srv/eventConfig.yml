@@ -8,7 +8,19 @@ events:
 periodicEvents:
   - type: HealthCheck
     subType: DB
-    impl: ./srv/EventQueueHealthCheckDb
+    impl: "./srv/EventQueueHealthCheckDb"
     load: 80
-    transactionMode: alwaysRollback
+    transactionMode: isolated
+    interval: 15
+  - type: HealthCheckMJS
+    subType: DB
+    impl: "./srv/EventQueueHealthCheckDb.mjs"
+    load: 80
+    transactionMode: isolated
+    interval: 15
+  - type: HealthCheckCJS
+    subType: DB
+    impl: "./srv/EventQueueHealthCheckDb.cjs"
+    load: 80
+    transactionMode: isolated
     interval: 15
